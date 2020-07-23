@@ -18,15 +18,14 @@ def article_create_view(request):
         text = request.POST.get('content')
         author = request.POST.get('author')
         article = Article.objects.create(title=title, text=text, author=author)
-        return redirect(f'/article/?pk={article.pk}')
+        return redirect(f'/article/{article.pk}/')
     else:
         HttpResponseNotAllowed(permitted_methods=['GET','POST'])
 
 
 
 
-def article_view(request):
-    article_id = request.GET.get('pk')
-    article = Article.objects.get(pk=article_id)
+def article_view(request, pk):
+    article = Article.objects.get(pk=pk)
     context = {'article': article}
     return render(request, 'article_view.html', context)

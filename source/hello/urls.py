@@ -21,5 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index_view),
     path('articles/add/', article_create_view),
-    path('article/', article_view)
+    path('article/<int:pk>/', article_view)
 ]

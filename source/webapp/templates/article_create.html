@@ -6,15 +6,14 @@
 </head>
 <body>
 <h1>Create Article</h1>
+<p><a href="/">На главную</a></p>
 <form action="/articles/add/" method="post">
     {% csrf_token %}
    
     <label>Title:</label><br/>
     <input type="text" name="title"/><br/>
-   
     <label>Text:</label><br/>
     <textarea name="content"></textarea><br/>
-   
     <label>Author:</label><br/>
     <input type="text" name="author"/><br/>
     <br/>

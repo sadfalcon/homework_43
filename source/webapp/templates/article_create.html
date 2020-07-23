@@ -1,13 +1,22 @@
-
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Create</title>
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
 </head>
 <body>
-<h1>Create Article</h1>
-<p><a href="{% url "index" %}">На главную</a></p>
+<div class="container">
+
+<nav class="navbar">
+   <div class="container">
+       <ul class="menu">
+           <li><a href="{% url 'index' %}">Index</a></li>
+       </ul>
+   </div>
+</nav>
+    <h1>Create Article</h1>
 <form action="{% url "article_create" %}" method="post">
     {% csrf_token %}
    
@@ -20,5 +29,6 @@
     <br/>
     <input type="submit" value="Send"/>
 </form>
+</div>
 </body>
 </html>

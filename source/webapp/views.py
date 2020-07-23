@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from webapp.models import Article
 from django.http import HttpResponseNotAllowed
@@ -28,9 +28,8 @@ def article_create_view(request):
         HttpResponseNotAllowed(permitted_methods=['GET','POST'])
 
 
-
-
 def article_view(request, pk):
+    article = get_object_or_404(Article, pk=pk)
     article = Article.objects.get(pk=pk)
     context = {'article': article}
     return render(request, 'article_view.html', context)

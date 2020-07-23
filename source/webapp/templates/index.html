@@ -11,8 +11,14 @@
 </head>
 <body>
 <div class="container">
+<nav class="navbar">
+   <div class="container">
+       <ul class="menu">
+           <li><a href="{% url 'article_create' %}">Add Article</a></li>
+       </ul>
+   </div>
+</nav>
     <h1> My First Blog</h1>
-<a href="{% url "article_create" %}">Добавить статью</a>
     {% for article in articles %}
     <h3>{{ article.pk }}. {{ article.title }}</h3>
         <p>{{ article.author }} | {{ article.created_at }}</p>
@@ -20,7 +26,7 @@
     <p><a href="/article/{{ article.pk }}/">Подробнее...</a></p>
     <hr>
     {% endfor %}
-<a href="{% url "article_create" %}">Добавить статью</a>
+
 
 
 </div>

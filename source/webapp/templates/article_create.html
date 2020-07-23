@@ -1,25 +1,11 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Create</title>
-    <link rel="stylesheet" href="{% static "css/style.css" %}">
-</head>
-<body>
-<div class="container">
+{% extends 'base.html' %}
+{% block title %}Create{% endblock %}
 
-<nav class="navbar">
-   <div class="container">
-       <ul class="menu">
-           <li><a href="{% url 'index' %}">Index</a></li>
-       </ul>
-   </div>
-</nav>
+{% block content %}
     <h1>Create Article</h1>
 <form action="{% url "article_create" %}" method="post">
     {% csrf_token %}
-   
+
     <label>Title:</label><br/>
     <input type="text" name="title"/><br/>
     <label>Text:</label><br/>
@@ -29,6 +15,4 @@
     <br/>
     <input type="submit" value="Send"/>
 </form>
-</div>
-</body>
-</html>
+{% endblock %}

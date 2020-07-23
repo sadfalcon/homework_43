@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from webapp.models import Article
 from django.http import HttpResponseNotAllowed
+
 
 def index_view(request):
     data = Article.objects.all()
@@ -18,7 +20,10 @@ def article_create_view(request):
         text = request.POST.get('content')
         author = request.POST.get('author')
         article = Article.objects.create(title=title, text=text, author=author)
-        return redirect(f'/article/{article.pk}/')
+
+        #url = reverse('article_view', kwargs={'pk': article.pk})
+        return redirect('article_view', pk=article.pk
+                        )
     else:
         HttpResponseNotAllowed(permitted_methods=['GET','POST'])
 

@@ -1,18 +1,24 @@
 {% extends 'base.html' %}
+
 {% block title %}Create{% endblock %}
 
 {% block content %}
     <h1>Create Article</h1>
-<form action="{% url "article_create" %}" method="post">
-    {% csrf_token %}
 
-    <label>Title:</label><br/>
-    <input type="text" name="title"/><br/>
-    <label>Text:</label><br/>
-    <textarea name="content"></textarea><br/>
-    <label>Author:</label><br/>
-    <input type="text" name="author"/><br/>
-    <br/>
-    <input type="submit" value="Send"/>
-</form>
+    <form action="{% url "article_create" %}" method="post">
+        {% csrf_token %}
+
+{#        {% for field in form %}#}
+{#            {% include 'partial/form_field.html' %}#}
+{#        {% endfor %}#}
+
+{#        {{ form.as_p }}#}
+{#        {{ form.as_table }}#}
+
+        {% include 'partial/form_field.html' with field=form.title %}
+        {% include 'partial/form_field.html' with field=form.text %}
+        {% include 'partial/form_field.html' with field=form.author %}
+        <br/>
+        <input type="submit" value="Send"/>
+    </form>
 {% endblock %}
